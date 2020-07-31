@@ -14,7 +14,7 @@ router.get('/private', Routeguard, (req, res, next) => {
   res.render('authentication/private');
 });
 
-router.get('/student-dashboard', roleRouteGuard('student'), (req, res, next) => {
+router.get('/student-dashboard', roleRouteGuard('student','teacher', 'assistant'), (req, res, next) => {
   res.render('student.hbs');
 });
 
@@ -22,7 +22,7 @@ router.get('/assistant-dashboard', roleRouteGuard(['teacher', 'assistant']),(req
   res.render('assistant.hbs');
 });
 
-router.get('/teacher-dashboard', roleRouteGuard(['teacher', 'student', 'assistant']), (req, res, next) => {
+router.get('/teacher-dashboard', roleRouteGuard(['teacher']), (req, res, next) => {
   res.render('teacher.hbs');
 });
 
